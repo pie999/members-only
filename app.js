@@ -60,6 +60,8 @@ mongoose
 app.use("/", require("./routes/sign-up"));
 app.use("/", require("./routes/log-in"));
 app.use("/", require("./routes/home"));
+app.use("/", require("./routes/messageRoute"));
+app.use("/", require("./routes/member"));
 
 // error handler (must have 4 arguments for express to consider it as an error handler and not throw an error)
 app.use((err, req, res, next) => {

@@ -8,6 +8,7 @@ const User = require("../models/user");
 router.get("/sign-up", (req, res) => {
   res.render("sign-up-form");
 });
+
 router.post(
   "/sign-up",
   body("username")
@@ -30,7 +31,7 @@ router.post(
     })
     .withMessage("passwords do not match"),
 
-  asyncHandler(async (req, res, next) => {
+  asyncHandler(async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       res.render("sign-up-form", { errors: errors.array() });
@@ -42,7 +43,7 @@ router.post(
         password: hashedPassword,
       });
       await user.save();
-      res.redirect("/");
+      res.redirect("/home");
     }
   })
 );
