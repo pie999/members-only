@@ -32,4 +32,13 @@ router.post(
   })
 );
 
+router.delete(
+  "/message/:id",
+  asyncHandler(async (req, res) => {
+    const messId = req.params.id;
+    await Message.findByIdAndDelete(messId);
+    res.sendStatus(200);
+  })
+);
+
 module.exports = router;
